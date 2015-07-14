@@ -12,9 +12,9 @@ class Application extends Controller {
       val conn = DB.getConnection()
       try {
         val stmt = conn.createStatement
-        val rs = stmt.executeQuery("SELECT 9 as testkey ")
+        val rs = stmt.executeQuery("SELECT COUNT(*) as CNT FROM TB_USER")
         while (rs.next()) {
-          outString += rs.getString("testkey")
+          outString += rs.getString("CNT")
         }
       } finally {
         conn.close()
